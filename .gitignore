@@ -23,6 +23,7 @@ dist
 .project
 .pydevproject
 .settings
+.idea
 /*.egg-info/
 /*.egg/
 develop-eggs
