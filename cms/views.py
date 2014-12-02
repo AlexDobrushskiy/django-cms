@@ -13,6 +13,7 @@ from django.utils.cache import add_never_cache_headers
 from django.utils.encoding import iri_to_uri, force_text
 from django.utils.http import urlquote
 from django.utils.timezone import get_current_timezone_name
+from django.utils.translation import activate
 
 from cms.apphook_pool import apphook_pool
 from cms.appresolver import get_app_urls
@@ -52,6 +53,8 @@ def details(request, slug):
     page.
     """
     from django.core.cache import cache
+    if hasattr(request, 'activate_english'):
+        activate('en')
 
     if get_cms_setting("PAGE_CACHE") and (
         not hasattr(request, 'toolbar') or (
